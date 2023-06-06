@@ -9,16 +9,16 @@ readonly APIUrl = "http://127.0.0.1:8000/";
 readonly PhotoUrl= "http://127.0.0.1:8000/photo/";
   constructor(private http:HttpClient) { }
   getDepList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl +'/department/');}
+    return this.http.get<any[]>(this.APIUrl +'department/');}
   
   addDepartement(val:any){
-    return this.http.post<any[]>(this.APIUrl +'/department/', val);
+    return this.http.post<any[]>(this.APIUrl +'department/', val);
   }
   UploadDepartement(val:any){
-    return this.http.put<any[]>(this.APIUrl +'/department/', val);
+    return this.http.put<any[]>(this.APIUrl +'department/', val);
   }
-  DeletDepartement(val:any){
-    return this.http.delete<any[]>(this.APIUrl +'/department/'+val);
+  DeleteDepartement(val:any){
+    return this.http.delete<any[]>(this.APIUrl +'department/'+val);
   }
 
   
@@ -26,22 +26,22 @@ readonly PhotoUrl= "http://127.0.0.1:8000/photo/";
 
 
   getEmpList():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl +'/employee/');}
+    return this.http.get<any[]>(this.APIUrl +'employee/');}
   
   addEmp(val1:any){
-    return this.http.post<any[]>(this.APIUrl +'/employee/', val1);
+    return this.http.post<any[]>(this.APIUrl +'employee/', val1);
   }
   UploadEmp(val1:any){
-    return this.http.put<any[]>(this.APIUrl +'/employee/', val1);
+    return this.http.put<any[]>(this.APIUrl +'employee/', val1);
   }
-  DeletEmp(val1:any){
-    return this.http.delete<any[]>(this.APIUrl +'/employee/'+val1);
+  DeleteEmp(val1:any){
+    return this.http.delete<any[]>(this.APIUrl +'employee/'+val1);
   }
 
   UploadPhoto(val1:any){
-    return this.http.post(this.APIUrl +'/Savefile', val1);
+    return this.http.post(this.APIUrl +'Savefile/', val1);
   }
   getALLDepNames():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl+'/department/');
+    return this.http.get<any[]>(this.APIUrl+'department/');
   }
 }

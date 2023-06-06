@@ -17,22 +17,25 @@ export class PutDepComponent implements OnInit{
   DepartmentName:String="";
 
   ngOnInit(): void{
-    this.DepartmentId= this.dep.DepartmentId;
-    this.DepartmentName= this.dep.DepartmentName;
+    this.DepartmentId= this.dep.DepID;
+    this.DepartmentName= this.dep.DepName;
   }
-  addDepartment(){
-    var val = {DepartmentId:this.DepartmentId,
-                DepartmentName:this.DepartmentName};
+  adddepartment(){
+    var val = {DepID:this.DepartmentId,
+                DepName:this.DepartmentName};
     this.service.addDepartement(val).subscribe(res=>{
       alert(res.toString());
     });
   }
 
   updateDepartment(){
-    var val = {DepartmentId:this.DepartmentId,
-      DepartmentName:this.DepartmentName};
+    var val = {DepID:this.DepartmentId,
+      DepName:this.DepartmentName};
     this.service.UploadDepartement(val).subscribe(res=>{
     alert(res.toString());
     });
-  }
+  
+
+  }  
+  
 }

@@ -31,7 +31,7 @@ export class ShowDepComponent implements OnInit {
       DepartmentId:0,
       DepartmentName:""
     }
-    this.ModalTitle="Add Department";
+    this.ModalTitle="AddDepartment";
     this.ActivateAddEditDepComp=true;
 
   }
@@ -41,11 +41,17 @@ export class ShowDepComponent implements OnInit {
     this.ActivateAddEditDepComp=true;
   }
 
-
+  refreshDepList(){
+    this.service.getDepList().subscribe(data=>{
+      this.DepartmentList=data;
+      this.DepartmentListWithoutFilter=data;
+    });
+  }
 
   deleteClick(item:any){
-    if(confirm('Are you sure??')){
-      this.service.DeletDepartement(item.DepId).subscribe(data=>{
+    if(confirm('Are you sure?')){
+      
+      this.service.DeleteDepartement(item.DepID).subscribe(data=>{
         alert(data.toString());
         this.refreshDepList();
       })
@@ -56,13 +62,7 @@ export class ShowDepComponent implements OnInit {
     this.refreshDepList();
   }
 
-  refreshDepList(){
-    this.service.getDepList().subscribe(data=>{
-      this.DepartmentList=data;
-      console.log("succe");
-     
-    });
-  }
+ 
   FilterFn(){
     var DepartmentIdFilter = this.DepartmentIdFilter;
     var DepartmentNameFilter = this.DepartmentNameFilter;

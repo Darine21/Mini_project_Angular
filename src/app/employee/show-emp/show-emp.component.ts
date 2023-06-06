@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DepartementComponent } from 'src/app/departement/departement.component';
 import {SharedService} from 'src/app/shared.service';
 @Component({
   selector: 'app-show-emp',
@@ -12,6 +13,57 @@ export class ShowEmpComponent {
     this.refreshEmpList();
        
   }
+  ModalTitle:string="";
+  ActivateAddEditEmpComp:boolean=false;
+  emp:any;
+
+  EmployeeIdFilter:string="";
+  EmployeeNameFilter:string="";
+  EmployeeListWithoutFilter:any=[];
+
+  addClick(){
+    this.emp={
+      EmployeeId:0,
+      EmployeeName:"",
+      Department:"",
+      Dateofjoining:"",
+      PhotoFileName:"téléchargement (3)"
+
+    }
+    this.ModalTitle="Add Employee";
+    this.ActivateAddEditEmpComp=true;
+
+  }
+  editClick(item:any){
+    this.emp=item;
+    this.ModalTitle="Edit Employee";
+    this.ActivateAddEditEmpComp=true;
+  }
+
+  
+
+  deleteClick(item:any){
+    if(confirm('Are you sure?')){
+      
+      this.service.DeleteEmp(item.DepID).subscribe(data=>{
+        alert(data.toString());
+        this.refreshEmpList();
+      })
+    }
+  }
+  closeClick(){
+    this.ActivateAddEditEmpComp=false;
+    this.refreshEmpList();
+  }
+
+ 
+
+
+
+
+
+
+
   refreshEmpList(){
     this.service.getEmpList().subscribe(data=>{
       this.EmployeeList=data;
