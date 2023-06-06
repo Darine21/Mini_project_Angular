@@ -13,10 +13,10 @@ export class AddPutDepComponent implements OnInit{
   @Input()  emp:any; 
   EmployeeId:String="";
   EmployeeName:String="";
-  Department:string="";
-  DateOfJoining:string="";
-  PhotoFileName:string="";
-  PhotoFilePath:string="";
+  Department:String="";
+  DateOfJoining:String="";
+  PhotoFileName:String="";
+  PhotoFilePath:String="";
 
   DepartmentsList:any=[];
 
@@ -51,10 +51,11 @@ export class AddPutDepComponent implements OnInit{
 
   updateEmployee(){
     var val = {EmpID:this.EmployeeId,
-      EmpName:this.EmployeeName,
+      EmpName:this.EmployeeName ,
       Empdep:this.Department,
       DateofJoining:this.DateOfJoining,
-      photoFieldName:this.PhotoFileName};
+      photoFieldName:this.PhotoFileName
+    };
     this.service.UploadEmp(val).subscribe(res=>{
     alert(res.toString());
     });

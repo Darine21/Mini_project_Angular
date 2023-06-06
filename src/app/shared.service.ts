@@ -31,8 +31,8 @@ readonly PhotoUrl= "http://127.0.0.1:8000/photo/";
   addEmp(val1:any){
     return this.http.post<any[]>(this.APIUrl +'employee/', val1);
   }
-  UploadEmp(val1:any){
-    return this.http.put<any[]>(this.APIUrl +'employee/', val1);
+  UploadEmp(val:any){
+    return this.http.put<any[]>(this.APIUrl +'employee/', val);
   }
   DeleteEmp(val1:any){
     return this.http.delete<any[]>(this.APIUrl +'employee/'+val1);

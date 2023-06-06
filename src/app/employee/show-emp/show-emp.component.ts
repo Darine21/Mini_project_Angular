@@ -17,9 +17,7 @@ export class ShowEmpComponent {
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
 
-  EmployeeIdFilter:string="";
-  EmployeeNameFilter:string="";
-  EmployeeListWithoutFilter:any=[];
+ 
 
   addClick(){
     this.emp={
@@ -27,7 +25,7 @@ export class ShowEmpComponent {
       EmployeeName:"",
       Department:"",
       Dateofjoining:"",
-      PhotoFileName:"téléchargement (3)"
+      PhotoFileName:"téléchargement (3).jpeg"
 
     }
     this.ModalTitle="Add Employee";
@@ -43,9 +41,8 @@ export class ShowEmpComponent {
   
 
   deleteClick(item:any){
-    if(confirm('Are you sure?')){
-      
-      this.service.DeleteEmp(item.DepID).subscribe(data=>{
+    if(confirm('Are you sure?')){ 
+      this.service.DeleteEmp(item.EmpID).subscribe(data=>{
         alert(data.toString());
         this.refreshEmpList();
       })
