@@ -39,7 +39,7 @@ readonly PhotoUrl= "http://127.0.0.1:8000/photo/";
   }
 
   UploadPhoto(val1:any){
-    return this.http.post(this.APIUrl +'Savefile/', val1);
+    return this.http.post(this.APIUrl +'Savefile/',val1);
   }
   getALLDepNames():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl+'department/');

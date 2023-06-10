@@ -33,7 +33,7 @@ export class AddPutDepComponent implements OnInit{
       this.EmployeeName=this.emp.EmpName;
       this.Department=this.emp.Empdep;
       this.DateOfJoining=this.emp.DateofJoining;
-      this.PhotoFileName=this.emp.PhotoFileName;
+      this.PhotoFileName=this.emp.photoFieldName;
       this.PhotoFilePath=this.service.PhotoUrl+this.PhotoFileName;
     });
   }
@@ -50,25 +50,26 @@ export class AddPutDepComponent implements OnInit{
   }
 
   updateEmployee(){
-    var val = {EmpID:this.EmployeeId,
-      EmpName:this.EmployeeName ,
+    var val= {EmpID:this.EmployeeId,
+      EmpName:this.EmployeeName,
       Empdep:this.Department,
       DateofJoining:this.DateOfJoining,
       photoFieldName:this.PhotoFileName
     };
+    console.log("ee");
     this.service.UploadEmp(val).subscribe(res=>{
+      console.log("a");
     alert(res.toString());
     });
-  
-
-  }  
+  } 
 
   uploadPhoto(event:any){
     var file=event.target.files[0];
     const formData:FormData=new FormData();
-    formData.append('uploadedFile',file,file.name);
-
+    formData.append('uploadedfile',file,file.name);
+    console.log("aaaa");
     this.service.UploadPhoto(formData).subscribe((data:any)=>{
+      console.log("aaaaa");
       this.PhotoFileName=data.toString();
       this.PhotoFilePath=this.service.PhotoUrl+this.PhotoFileName;
     })

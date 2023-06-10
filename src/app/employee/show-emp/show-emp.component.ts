@@ -17,7 +17,7 @@ export class ShowEmpComponent {
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
 
- 
+  PhotoFilePath:String="";
 
   addClick(){
     this.emp={
@@ -25,9 +25,10 @@ export class ShowEmpComponent {
       EmployeeName:"",
       Department:"",
       Dateofjoining:"",
-      PhotoFileName:"téléchargement (3).jpeg"
+      PhotoFileName:"téléchargement (1).jpeg"
 
     }
+    this.PhotoFilePath = this.service.PhotoUrl+this.emp.PhotoFileName;
     this.ModalTitle="Add Employee";
     this.ActivateAddEditEmpComp=true;
 
