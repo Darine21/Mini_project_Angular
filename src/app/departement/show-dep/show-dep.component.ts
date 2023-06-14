@@ -52,6 +52,7 @@ export class ShowDepComponent implements OnInit {
     if(confirm('Are you sure?')){
       
       this.service.DeleteDepartement(item.DepID).subscribe(data=>{
+        this.ModalTitle="delete Department";
         alert(data.toString());
         this.refreshDepList();
       })

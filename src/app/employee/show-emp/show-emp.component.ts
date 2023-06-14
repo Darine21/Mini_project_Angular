@@ -25,10 +25,10 @@ export class ShowEmpComponent {
       EmployeeName:"",
       Department:"",
       Dateofjoining:"",
-      PhotoFileName:"téléchargement (1).jpeg"
+      PhotoFieldName:"téléchargement (1).jpeg"
 
     }
-    this.PhotoFilePath = this.service.PhotoUrl+this.emp.PhotoFileName;
+    //this.PhotoFilePath = this.service.PhotoUrl+this.emp.PhotoFileName;
     this.ModalTitle="Add Employee";
     this.ActivateAddEditEmpComp=true;
 
@@ -44,6 +44,7 @@ export class ShowEmpComponent {
   deleteClick(item:any){
     if(confirm('Are you sure?')){ 
       this.service.DeleteEmp(item.EmpID).subscribe(data=>{
+        this.ModalTitle="delete Employee";
         alert(data.toString());
         this.refreshEmpList();
       })

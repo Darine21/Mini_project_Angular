@@ -63,15 +63,18 @@ export class AddPutDepComponent implements OnInit{
     });
   } 
 
-  uploadPhoto(event:any){
-    var file=event.target.files[0];
-    const formData:FormData=new FormData();
-    formData.append('uploadedfile',file,file.name);
-    console.log("aaaa");
-    this.service.UploadPhoto(formData).subscribe((data:any)=>{
-      console.log("aaaaa");
-      this.PhotoFileName=data.toString();
-      this.PhotoFilePath=this.service.PhotoUrl+this.PhotoFileName;
-    })
+  uploadPhoto(event: any) {
+    var file = event.target.files[0];
+    if (file) { // Vérifie si file est défini
+      const formData: FormData = new FormData();
+      formData.append('uploadfile', file, file.name);
+      console.log("aaaa");
+      this.service.UploadPhoto(formData).subscribe((data: any) => {
+        console.log("aaaaa");
+        this.PhotoFileName = data.toString();
+        this.PhotoFilePath = this.service.PhotoUrl + this.PhotoFileName;
+      });
+    }
   }
+  
 }
